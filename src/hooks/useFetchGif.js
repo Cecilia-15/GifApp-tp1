@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { getGifs } from '../helpers/getGifs';
 
+import PropTypes from 'prop-types';
+
 export const useFetchGif = (category) => {
 
     const [imagenes, setImagenes] = useState([]);
@@ -20,4 +22,8 @@ export const useFetchGif = (category) => {
         imagenes,
         loading,
     };
+}
+
+useFetchGif.propTypes = {
+  useFetchGif: PropTypes.func.isRequire
 }

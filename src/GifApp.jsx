@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AddCategory, GifGrid } from "./components";
 
+import PropTypes from 'prop-types';
 
 export const GifApp = () => {
   const [categories, setCategories] = useState([]);
@@ -29,7 +30,7 @@ export const GifApp = () => {
         
         {
           categories.length > 0 &&
-          <button onClick={handleClick}>Reset</button>
+          <button name="btnReset" onClick={handleClick}>Reset</button>
         }
       
       </div>
@@ -37,14 +38,21 @@ export const GifApp = () => {
       
       {/* Listado de Gif */}
       {
-      categories.map((category) => (
+      categories.map((category) => 
         <GifGrid 
         key={category} 
         category={category}
         deleteCategory={handleDeleteCategory} 
         />
-      ))
+      )
       }
     </>
   );
 };
+
+// GifApp.prototype = {
+//   category: PropTypes.array,
+//   handleAddCategory: PropTypes.func,
+//   handleDeleteCategory: PropTypes.func,
+//   handleClick: PropTypes.func
+// }

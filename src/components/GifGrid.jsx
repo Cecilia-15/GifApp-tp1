@@ -2,6 +2,8 @@ import { useFetchGif } from "../hooks/useFetchGif";
 import { GifItem } from "./GifItem";
 import { useState } from "react";
 
+import PropTypes from 'prop-types';
+
 export const GifGrid = ({category, deleteCategory}) => {
 
   const {imagenes, loading} = useFetchGif(category);
@@ -15,8 +17,8 @@ export const GifGrid = ({category, deleteCategory}) => {
     <div className="card-title-container">
         <h3 style={{color: 'white'}}>{category}</h3>  
         <div>
-          <button onClick={() => deleteCategory(category)}>Eliminar</button>
-          <button onClick={handleShow}>{show ? 'Ocultar' : 'Mostrar'}</button>
+          <button name='btnDeleteCategory' onClick={() => deleteCategory(category)}>Eliminar</button>
+          <button name="btnShow" onClick={handleShow}>{show ? 'Ocultar' : 'Mostrar'}</button>
         </div>   
     </div>
         
@@ -30,3 +32,7 @@ export const GifGrid = ({category, deleteCategory}) => {
     </>
   )
 }
+
+// GifGrid.propTypes = {
+//   category: PropTypes.string.isRequire
+// }
